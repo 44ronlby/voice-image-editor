@@ -11,10 +11,25 @@
       <header>
         <p class="eyebrow">Custom classical ML demo</p>
         <h1>Voice Image Editor</h1>
-        <p>Recognize five commands.</p>
       </header>
-    </main>
 
-    <script src="{{ url_for('static', filename='app.js') }}"></script>
-  </body>
-</html>
+      <section class="card editor-card">
+        <div class="toolbar">
+          <label class="upload-button">
+            Choose an image
+            <input id="image-input" type="file" accept="image/*">
+          </label>
+
+          <div class="manual-controls" aria-label="Manual image controls">
+            {% for command in commands %}
+              <button class="manual-command" data-command="{{ command }}">
+                {{ command|capitalize }}
+              </button>
+            {% endfor %}
+          </div>
+
+          <div class="preview-stage">
+          <p id="preview-placeholder">Choose an image to begin.</p>
+          <img id="preview" alt="Uploaded preview" hidden>
+        </div>
+      </section>
