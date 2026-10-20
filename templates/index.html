@@ -33,3 +33,30 @@
           <img id="preview" alt="Uploaded preview" hidden>
         </div>
       </section>
+
+            <section class="card training-card">
+        <h2>1. Record training examples</h2>
+        <p>Record five clear examples of each word using the same microphone and speaking style.</p>
+
+        <div class="record-grid">
+          {% for command in commands %}
+            <button class="record-command" data-command="{{ command }}">
+              Record “{{ command }}”
+              <span id="count-{{ command }}">0/{{ required }}</span>
+            </button>
+          {% endfor %}
+        </div>
+
+        <h2>2. Train and use the model</h2>
+        <div class="model-controls">
+          <button id="train-button" disabled>Train Model</button>
+          <button id="listen-button">Listen for Command</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite">Ready.</p>
+      </section>
+    </main>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+  </body>
+</html>
